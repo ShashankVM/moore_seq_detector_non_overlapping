@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+<testsuite timestamp="2023-02-22T19:22:27" hostname="shashank-Latitude-3520" package="seq_detector" id="0" name="bmc" tests="3" errors="0" failures="2" time="0" skipped="2">
+<properties>
+<property name="os" value="Linux"/>
+<property name="expect" value="PASS"/>
+<property name="status" value="FAIL"/>
+</properties>
+<testcase classname="bmc" name="build execution" time="0">
+<failure type="FAIL" message="Task returned status FAIL." />
+</testcase>
+<testcase classname="bmc" name="Property COVER in seq_detector at seq_detector.sv:47" time="0" type="COVER" location="seq_detector.sv:47" id="SEQ_DETECT_WITNESS">
+<skipped />
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in seq_detector at seq_detector.sv:45" time="0" type="ASSERT" location="seq_detector.sv:45" id="ASSERT_CHK_SEQ_DETECT">
+<skipped />
+</testcase>
+<testcase classname="bmc" name="Property ASSERT in seq_detector at seq_detector.sv:46" time="0" type="ASSERT" location="seq_detector.sv:46" id="ASSERT_ONE_HOT_STATE_ENCODING" tracefile="engine_0/trace.vcd">
+<failure type="ASSERT" message="Property ASSERT in seq_detector at seq_detector.sv:46 failed. Trace file: engine_0/trace.vcd" />
+</testcase>
+<system-out>SBY 19:22:27 [seq_detector_bmc] Removing directory '/home/shashank/moore_seq_detector_non_overlapping/seq_detector_bmc'.
+SBY 19:22:27 [seq_detector_bmc] Copy '/home/shashank/moore_seq_detector_non_overlapping/seq_detector.sv' to '/home/shashank/moore_seq_detector_non_overlapping/seq_detector_bmc/src/seq_detector.sv'.
+SBY 19:22:27 [seq_detector_bmc] engine_0: smtbmc boolector
+SBY 19:22:27 [seq_detector_bmc] base: starting process &quot;cd seq_detector_bmc/src; yosys -ql ../model/design.log ../model/design.ys&quot;
+SBY 19:22:27 [seq_detector_bmc] base: This is an EVALUATION LICENSE of Tabby CAD Suite.
+SBY 19:22:27 [seq_detector_bmc] base: This license is granted for the limited purpose of evaluating Tabby CAD Suite only.
+SBY 19:22:27 [seq_detector_bmc] base: This license was issued to Shashank V M.
+SBY 19:22:27 [seq_detector_bmc] base: Customer PoC: Shashank V M &lt;shashankmathew8@gmail.com&gt;.
+SBY 19:22:27 [seq_detector_bmc] base: VERIFIC-WARNING [VERI-1995] seq_detector.sv:23: unique/priority if/case is not full
+SBY 19:22:27 [seq_detector_bmc] base: VERIFIC-WARNING [VERI-1142] seq_detector.sv:24: system task 'monitor' is ignored for synthesis
+SBY 19:22:27 [seq_detector_bmc] base: finished (returncode=0)
+SBY 19:22:27 [seq_detector_bmc] prep: starting process &quot;cd seq_detector_bmc/model; yosys -ql design_prep.log design_prep.ys&quot;
+SBY 19:22:27 [seq_detector_bmc] prep: This is an EVALUATION LICENSE of Tabby CAD Suite.
+SBY 19:22:27 [seq_detector_bmc] prep: This license is granted for the limited purpose of evaluating Tabby CAD Suite only.
+SBY 19:22:27 [seq_detector_bmc] prep: This license was issued to Shashank V M.
+SBY 19:22:27 [seq_detector_bmc] prep: Customer PoC: Shashank V M &lt;shashankmathew8@gmail.com&gt;.
+SBY 19:22:27 [seq_detector_bmc] prep: finished (returncode=0)
+SBY 19:22:27 [seq_detector_bmc] smt2: starting process &quot;cd seq_detector_bmc/model; yosys -ql design_smt2.log design_smt2.ys&quot;
+SBY 19:22:27 [seq_detector_bmc] smt2: This is an EVALUATION LICENSE of Tabby CAD Suite.
+SBY 19:22:27 [seq_detector_bmc] smt2: This license is granted for the limited purpose of evaluating Tabby CAD Suite only.
+SBY 19:22:27 [seq_detector_bmc] smt2: This license was issued to Shashank V M.
+SBY 19:22:27 [seq_detector_bmc] smt2: Customer PoC: Shashank V M &lt;shashankmathew8@gmail.com&gt;.
+SBY 19:22:27 [seq_detector_bmc] smt2: finished (returncode=0)
+SBY 19:22:27 [seq_detector_bmc] engine_0: starting process &quot;cd seq_detector_bmc; yosys-smtbmc -s boolector --presat --unroll --noprogress -t 20  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2&quot;
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Solver: boolector
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Checking assumptions in step 0..
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Checking assertions in step 0..
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Checking assumptions in step 1..
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Checking assertions in step 1..
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  BMC failed!
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Assert failed in seq_detector: ASSERT_ONE_HOT_STATE_ENCODING
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Writing trace to VCD file: engine_0/trace.vcd
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Writing trace to Verilog testbench: engine_0/trace_tb.v
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Writing trace to constraints file: engine_0/trace.smtc
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Writing trace to Yosys witness file: engine_0/trace.yw
+SBY 19:22:27 [seq_detector_bmc] engine_0: ##   0:00:00  Status: failed
+SBY 19:22:27 [seq_detector_bmc] engine_0: finished (returncode=1)
+SBY 19:22:27 [seq_detector_bmc] engine_0: Status returned by engine: FAIL
+SBY 19:22:27 [seq_detector_bmc] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 19:22:27 [seq_detector_bmc] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 19:22:27 [seq_detector_bmc] summary: engine_0 (smtbmc boolector) returned FAIL
+SBY 19:22:27 [seq_detector_bmc] summary: counterexample trace: seq_detector_bmc/engine_0/trace.vcd
+SBY 19:22:27 [seq_detector_bmc] summary:   failed assertion seq_detector.ASSERT_ONE_HOT_STATE_ENCODING at seq_detector.sv:46 in step 1
+SBY 19:22:27 [seq_detector_bmc] DONE (FAIL, rc=2)
+</system-out>
+<system-err>
+</system-err>
+</testsuite>
+</testsuites>
