@@ -1,6 +1,8 @@
 # moore_seq_detector_non_overlapping
 Formally verified "1011" non-overlapping sequence detector - Moore FSM
 ---
+**Click on the image to view the full image**
+
 Waveform of witness cover opened in GTKWave:
   ![Waveform of covered statement opened in GTKWave](https://github.com/ShashankVM/moore_seq_detector_non_overlapping/blob/main/non_overlapping_pass.png)
 Waveform of Counterexample for failing overlapping property:
