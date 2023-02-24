@@ -10,3 +10,6 @@ Waveform of trace of Counterexample for failing overlapping property (without $r
 - This is a formally verified Moore FSM based non-overlapping sequence detector with registered outputs.
 - **Tools & Technologies:** SystemVerilog, SystemVerilog Assertions, Yosys, Tabby CAD Suite
 - **Results:** Assertion passing using both Bounded Model Checking and Full Proof using induction engine. Thanks to YosysHQ team for providing the insight on adding the one-hot state encoding assertion to get the proof to pass.
+- **Files:**
+   * seq_detector.sv: RTL design of "1011" non-overlapping sequence detector with registered outputs, Moore style.
+   * seq_detector.sby: SBY file for setup of Formal tool. 
