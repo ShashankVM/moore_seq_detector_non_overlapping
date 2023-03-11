@@ -2,8 +2,9 @@
 ; yosys-smt2-module seq_detector
 (declare-sort |seq_detector_s| 0)
 (declare-fun |seq_detector_is| (|seq_detector_s|) Bool)
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:139:execute$250"], "smtname": 0, "smtoffset": 0, "type": "reg", "width": 5}
-(declare-fun |seq_detector#0| (|seq_detector_s|) (_ BitVec 5)) ; $auto$async2sync.cc:139:execute$250
+; yosys-smt2-anyinit seq_detector#0 5 seq_detector.sv:12
+; yosys-smt2-witness {"offset": 0, "path": ["\\_witness_", "\\anyinit_verific_state_reg_seq_detector_sv_12_55"], "smtname": 0, "smtoffset": 0, "type": "init", "width": 5}
+(declare-fun |seq_detector#0| (|seq_detector_s|) (_ BitVec 5)) ; \_witness_.anyinit_verific_state_reg_seq_detector_sv_12_55
 (declare-fun |seq_detector#1| (|seq_detector_s|) (_ BitVec 1)) ; \reset
 (define-fun |seq_detector#2| ((state |seq_detector_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b00001 (|seq_detector#0| state))) ; \state
 ; yosys-smt2-wire state 5
@@ -17,20 +18,20 @@
 ; yosys-smt2-wire reset 1
 ; yosys-smt2-witness {"offset": 0, "path": ["\\reset"], "smtname": "reset", "smtoffset": 0, "type": "input", "width": 1}
 (define-fun |seq_detector_n reset| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#1| state)) #b1))
-(define-fun |seq_detector#4| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$wreduce.cc:455:run$248 [2]
+(define-fun |seq_detector#4| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$wreduce.cc:455:run$272 [2]
 (define-fun |seq_detector#5| ((state |seq_detector_s|)) Bool (= (|seq_detector#2| state) #b00001)) ; $verific$n47$3
 (define-fun |seq_detector#6| ((state |seq_detector_s|)) Bool (= (|seq_detector#2| state) #b00010)) ; $verific$n48$4
 (define-fun |seq_detector#7| ((state |seq_detector_s|)) Bool (= (|seq_detector#2| state) #b00100)) ; $verific$n49$5
 (define-fun |seq_detector#8| ((state |seq_detector_s|)) Bool (= (|seq_detector#2| state) #b01000)) ; $verific$n50$6
 (define-fun |seq_detector#9| ((state |seq_detector_s|)) Bool (= (|seq_detector#2| state) #b10000)) ; $verific$n51$7
-(define-fun |seq_detector#10| ((state |seq_detector_s|)) Bool (or  (|seq_detector#5| state) (|seq_detector#6| state) (|seq_detector#7| state) (|seq_detector#8| state) (|seq_detector#9| state))) ; $auto$rtlil.cc:2403:ReduceOr$59
+(define-fun |seq_detector#10| ((state |seq_detector_s|)) Bool (or  (|seq_detector#5| state) (|seq_detector#6| state) (|seq_detector#7| state) (|seq_detector#8| state) (|seq_detector#9| state))) ; $auto$rtlil.cc:2403:ReduceOr$64
 (define-fun |seq_detector#11| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#10| state) #b1 #b0))) ; $verific$n52$8
 (define-fun |seq_detector#12| ((state |seq_detector_s|)) (_ BitVec 5) (ite (|seq_detector#5| state) (concat #b000 (concat (ite (|seq_detector#3| state) #b1 #b0) (|seq_detector#4| state))) (ite (|seq_detector#6| state) (concat #b00 (concat (|seq_detector#4| state) (concat (ite (|seq_detector#3| state) #b1 #b0) #b0))) (ite (|seq_detector#7| state) (concat #b0 (concat (ite (|seq_detector#3| state) #b1 #b0) (concat #b00 (|seq_detector#4| state)))) (ite (|seq_detector#8| state) (concat (ite (|seq_detector#3| state) #b1 #b0) (concat #b0 (concat (|seq_detector#4| state) #b00))) (ite (|seq_detector#9| state) #b00001 (ite (= ((_ extract 0 0) (|seq_detector#11| state)) #b1) (|seq_detector#2| state) #b00000))))))) ; \next
 ; yosys-smt2-wire next 5
 (define-fun |seq_detector_n next| ((state |seq_detector_s|)) (_ BitVec 5) (|seq_detector#12| state))
-; yosys-smt2-anyinit seq_detector#13 1 seq_detector.sv:31
-; yosys-smt2-witness {"offset": 0, "path": ["\\_witness_", "\\anyinit_verific_detect_out_reg_seq_detector_sv_31_63"], "smtname": 13, "smtoffset": 0, "type": "init", "width": 1}
-(declare-fun |seq_detector#13| (|seq_detector_s|) (_ BitVec 1)) ; \_witness_.anyinit_verific_detect_out_reg_seq_detector_sv_31_63
+; yosys-smt2-anyinit seq_detector#13 1 seq_detector.sv:30
+; yosys-smt2-witness {"offset": 0, "path": ["\\_witness_", "\\anyinit_verific_detect_out_reg_seq_detector_sv_30_68"], "smtname": 13, "smtoffset": 0, "type": "init", "width": 1}
+(declare-fun |seq_detector#13| (|seq_detector_s|) (_ BitVec 1)) ; \_witness_.anyinit_verific_detect_out_reg_seq_detector_sv_30_68
 (define-fun |seq_detector#14| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#13| state))) ; \detect_out
 ; yosys-smt2-output detect_out 1
 ; yosys-smt2-wire detect_out 1
@@ -42,133 +43,156 @@
 ; yosys-smt2-witness {"offset": 0, "path": ["\\clk"], "smtname": "clk", "smtoffset": 0, "type": "posedge", "width": 1}
 ; yosys-smt2-witness {"offset": 0, "path": ["\\clk"], "smtname": "clk", "smtoffset": 0, "type": "input", "width": 1}
 (define-fun |seq_detector_n clk| ((state |seq_detector_s|)) Bool (|seq_detector#15| state))
-; yosys-smt2-register _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_31_63 1
-; yosys-smt2-wire _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_31_63 1
-(define-fun |seq_detector_n _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_31_63| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#13| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$verific$i26$seq_detector.sv:39$66"], "smtname": 16, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#16| (|seq_detector_s|) (_ BitVec 1)) ; $verific$i26$seq_detector.sv:39$66
-; yosys-smt2-register $verific$i26$seq_detector.sv:39$66 1
-(define-fun |seq_detector_n $verific$i26$seq_detector.sv:39$66| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#16| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$277"], "smtname": 17, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#17| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$277
-; yosys-smt2-register $auto$async2sync.cc:171:execute$277 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$277| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#17| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$275"], "smtname": 18, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#18| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$275
-; yosys-smt2-register $auto$async2sync.cc:171:execute$275 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$275| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#18| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$271"], "smtname": 19, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#19| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$271
-; yosys-smt2-register $auto$async2sync.cc:171:execute$271 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$271| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#19| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$269"], "smtname": 20, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#20| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$269
-; yosys-smt2-register $auto$async2sync.cc:171:execute$269 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$269| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#20| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$265"], "smtname": 21, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#21| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$265
-; yosys-smt2-register $auto$async2sync.cc:171:execute$265 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$265| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#21| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$263"], "smtname": 22, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#22| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$263
-; yosys-smt2-register $auto$async2sync.cc:171:execute$263 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$263| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#22| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$261"], "smtname": 23, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#23| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$261
-; yosys-smt2-register $auto$async2sync.cc:171:execute$261 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$261| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#23| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$259"], "smtname": 24, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#24| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$259
-; yosys-smt2-register $auto$async2sync.cc:171:execute$259 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$259| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#24| state)) #b1))
-; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$257"], "smtname": 25, "smtoffset": 0, "type": "reg", "width": 1}
-(declare-fun |seq_detector#25| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$257
-; yosys-smt2-register $auto$async2sync.cc:171:execute$257 1
-(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$257| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#25| state)) #b1))
-; yosys-smt2-register $auto$async2sync.cc:139:execute$250 5
-(define-fun |seq_detector_n $auto$async2sync.cc:139:execute$250| ((state |seq_detector_s|)) (_ BitVec 5) (|seq_detector#0| state))
-(define-fun |seq_detector#26| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#15| state) #b1 #b0))) ; $auto$rtlil.cc:2399:Not$312
-; yosys-smt2-assume 0 $auto$formalff.cc:758:execute$313
-(define-fun |seq_detector_u 0| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#26| state)) #b1) (not true))) ; $auto$formalff.cc:758:execute$313
-(define-fun |seq_detector#27| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#17| state))) ; $auto$verificsva.cc:1811:import$108
-(define-fun |seq_detector#28| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#19| state))) ; $auto$verificsva.cc:1812:import$109
+; yosys-smt2-register _witness_.anyinit_verific_state_reg_seq_detector_sv_12_55 5
+; yosys-smt2-wire _witness_.anyinit_verific_state_reg_seq_detector_sv_12_55 5
+(define-fun |seq_detector_n _witness_.anyinit_verific_state_reg_seq_detector_sv_12_55| ((state |seq_detector_s|)) (_ BitVec 5) (|seq_detector#0| state))
+; yosys-smt2-register _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_30_68 1
+; yosys-smt2-wire _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_30_68 1
+(define-fun |seq_detector_n _witness_.anyinit_verific_detect_out_reg_seq_detector_sv_30_68| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#13| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$verific$i32$seq_detector.sv:42$79"], "smtname": 16, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#16| (|seq_detector_s|) (_ BitVec 1)) ; $verific$i32$seq_detector.sv:42$79
+; yosys-smt2-register $verific$i32$seq_detector.sv:42$79 1
+(define-fun |seq_detector_n $verific$i32$seq_detector.sv:42$79| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#16| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$305"], "smtname": 17, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#17| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$305
+; yosys-smt2-register $auto$async2sync.cc:171:execute$305 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$305| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#17| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$303"], "smtname": 18, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#18| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$303
+; yosys-smt2-register $auto$async2sync.cc:171:execute$303 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$303| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#18| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$301"], "smtname": 19, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#19| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$301
+; yosys-smt2-register $auto$async2sync.cc:171:execute$301 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$301| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#19| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$297"], "smtname": 20, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#20| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$297
+; yosys-smt2-register $auto$async2sync.cc:171:execute$297 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$297| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#20| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$295"], "smtname": 21, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#21| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$295
+; yosys-smt2-register $auto$async2sync.cc:171:execute$295 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$295| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#21| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$293"], "smtname": 22, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#22| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$293
+; yosys-smt2-register $auto$async2sync.cc:171:execute$293 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$293| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#22| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$289"], "smtname": 23, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#23| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$289
+; yosys-smt2-register $auto$async2sync.cc:171:execute$289 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$289| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#23| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$287"], "smtname": 24, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#24| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$287
+; yosys-smt2-register $auto$async2sync.cc:171:execute$287 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$287| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#24| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$285"], "smtname": 25, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#25| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$285
+; yosys-smt2-register $auto$async2sync.cc:171:execute$285 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$285| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#25| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$283"], "smtname": 26, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#26| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$283
+; yosys-smt2-register $auto$async2sync.cc:171:execute$283 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$283| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#26| state)) #b1))
+; yosys-smt2-witness {"offset": 0, "path": ["$auto$async2sync.cc:171:execute$281"], "smtname": 27, "smtoffset": 0, "type": "reg", "width": 1}
+(declare-fun |seq_detector#27| (|seq_detector_s|) (_ BitVec 1)) ; $auto$async2sync.cc:171:execute$281
+; yosys-smt2-register $auto$async2sync.cc:171:execute$281 1
+(define-fun |seq_detector_n $auto$async2sync.cc:171:execute$281| ((state |seq_detector_s|)) Bool (= ((_ extract 0 0) (|seq_detector#27| state)) #b1))
+(define-fun |seq_detector#28| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#15| state) #b1 #b0))) ; $auto$rtlil.cc:2399:Not$344
+; yosys-smt2-assume 0 $auto$formalff.cc:758:execute$345
+(define-fun |seq_detector_u 0| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#28| state)) #b1) (not true))) ; $auto$formalff.cc:758:execute$345
+(define-fun |seq_detector#29| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#17| state))) ; $auto$verificsva.cc:1811:import$121
+(define-fun |seq_detector#30| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#20| state))) ; $auto$verificsva.cc:1812:import$122
 ; yosys-smt2-assert 0 ASSUME_ONE_HOT_STATE_ENCODING
-(define-fun |seq_detector_a 0| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#27| state)) #b1) (not (= ((_ extract 0 0) (|seq_detector#28| state)) #b1)))) ; ASSUME_ONE_HOT_STATE_ENCODING
-(define-fun |seq_detector#29| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#18| state))) ; $auto$verificsva.cc:1811:import$178
-(define-fun |seq_detector#30| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#20| state))) ; $auto$verificsva.cc:1812:import$179
+(define-fun |seq_detector_a 0| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#29| state)) #b1) (not (= ((_ extract 0 0) (|seq_detector#30| state)) #b1)))) ; ASSUME_ONE_HOT_STATE_ENCODING
+(define-fun |seq_detector#31| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#18| state))) ; $auto$verificsva.cc:1811:import$191
+(define-fun |seq_detector#32| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#21| state))) ; $auto$verificsva.cc:1812:import$192
 ; yosys-smt2-assert 1 ASSERT_CHK_SEQ_DETECT
-(define-fun |seq_detector_a 1| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#29| state)) #b1) (not (= ((_ extract 0 0) (|seq_detector#30| state)) #b1)))) ; ASSERT_CHK_SEQ_DETECT
-(define-fun |seq_detector#31| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#24| state))) ; $auto$verificsva.cc:293:getAccept$126
-(define-fun |seq_detector#32| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#31| state))) ; $auto$rtlil.cc:2496:Mux$300
-(define-fun |seq_detector#33| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#23| state))) ; $auto$verificsva.cc:293:getAccept$124
-(define-fun |seq_detector#34| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#33| state) (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$rtlil.cc:2429:And$136
-(define-fun |seq_detector#35| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#34| state))) ; $auto$rtlil.cc:2496:Mux$298
-(define-fun |seq_detector#36| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#22| state))) ; $auto$verificsva.cc:293:getAccept$121
-(define-fun |seq_detector#37| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#36| state) (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$rtlil.cc:2429:And$146
-(define-fun |seq_detector#38| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#37| state))) ; $auto$rtlil.cc:2496:Mux$296
-(define-fun |seq_detector#39| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#21| state))) ; $auto$verificsva.cc:293:getAccept$119
-(define-fun |seq_detector#40| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#39| state) (|seq_detector#4| state))) ; $auto$rtlil.cc:2429:And$130
-(define-fun |seq_detector#41| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#40| state))) ; $auto$rtlil.cc:2496:Mux$294
-(define-fun |seq_detector#42| ((state |seq_detector_s|)) Bool (= (ite (|seq_detector#3| state) #b1 #b0) #b1)) ; $verific$i26$seq_detector.sv:39$67
-(define-fun |seq_detector#43| ((state |seq_detector_s|)) Bool (= (concat (|seq_detector#16| state) (ite (|seq_detector#42| state) #b1 #b0)) #b01)) ; $auto$rtlil.cc:2429:And$142
-(define-fun |seq_detector#44| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#43| state) #b1 #b0))) ; $auto$rtlil.cc:2496:Mux$292
-(define-fun |seq_detector#45| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#25| state))) ; $auto$verificsva.cc:293:getAccept$197
-(define-fun |seq_detector#46| ((state |seq_detector_s|)) Bool (= (concat (|seq_detector#45| state) (|seq_detector#14| state)) #b10)) ; $auto$rtlil.cc:2403:ReduceOr$173
-(define-fun |seq_detector#47| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#46| state) #b1 #b0))) ; $auto$rtlil.cc:2496:Mux$288
-(define-fun |seq_detector#48| ((state |seq_detector_s|)) (_ BitVec 1) (bvor ((_ extract 0 0) (|seq_detector#2| state)) ((_ extract 1 1) (|seq_detector#2| state)))) ; $verific$n74$20
-(define-fun |seq_detector#49| ((state |seq_detector_s|)) (_ BitVec 1) (bvor ((_ extract 2 2) (|seq_detector#2| state)) ((_ extract 3 3) (|seq_detector#2| state)))) ; $verific$n76$22
-(define-fun |seq_detector#50| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#48| state) (|seq_detector#49| state))) ; $verific$n78$24
-(define-fun |seq_detector#51| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#50| state) ((_ extract 4 4) (|seq_detector#2| state)))) ; $verific$n82$28
-(define-fun |seq_detector#52| ((state |seq_detector_s|)) (_ BitVec 1) (bvand ((_ extract 0 0) (|seq_detector#2| state)) ((_ extract 1 1) (|seq_detector#2| state)))) ; $verific$n75$21
-(define-fun |seq_detector#53| ((state |seq_detector_s|)) (_ BitVec 1) (bvand ((_ extract 2 2) (|seq_detector#2| state)) ((_ extract 3 3) (|seq_detector#2| state)))) ; $verific$n77$23
-(define-fun |seq_detector#54| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#52| state) (|seq_detector#53| state))) ; $verific$n79$25
-(define-fun |seq_detector#55| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#48| state) (|seq_detector#49| state))) ; $verific$n80$26
-(define-fun |seq_detector#56| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#54| state) (|seq_detector#55| state))) ; $verific$n81$27
-(define-fun |seq_detector#57| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#50| state) ((_ extract 4 4) (|seq_detector#2| state)))) ; $verific$n83$29
-(define-fun |seq_detector#58| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#56| state) (|seq_detector#57| state))) ; $verific$n84$30
-(define-fun |seq_detector#59| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#58| state))) ; $verific$n85$31
-(define-fun |seq_detector#60| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#51| state) (|seq_detector#59| state))) ; $auto$rtlil.cc:2399:Not$105
-(define-fun |seq_detector#61| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#60| state))) ; $auto$rtlil.cc:2399:Not$103
-(define-fun |seq_detector#62| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#61| state))) ; $auto$rtlil.cc:2496:Mux$286
-(define-fun |seq_detector#63| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#46| state) #b1 #b0))) ; $auto$rtlil.cc:2399:Not$175
-(define-fun |seq_detector#64| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#63| state))) ; $auto$rtlil.cc:2496:Mux$282
-(define-fun |seq_detector#65| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#60| state))) ; $auto$rtlil.cc:2496:Mux$280
-(define-fun |seq_detector#66| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#9| state) #b1 #b0))) ; $auto$async2sync.cc:138:execute$253
-(define-fun |seq_detector#67| ((state |seq_detector_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b00001 (|seq_detector#12| state))) ; $auto$async2sync.cc:138:execute$249
+(define-fun |seq_detector_a 1| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#31| state)) #b1) (not (= ((_ extract 0 0) (|seq_detector#32| state)) #b1)))) ; ASSERT_CHK_SEQ_DETECT
+(define-fun |seq_detector#33| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#19| state))) ; $auto$verificsva.cc:1811:import$202
+(define-fun |seq_detector#34| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#22| state))) ; $auto$verificsva.cc:1812:import$203
+; yosys-smt2-assume 1 $auto$verificsva.cc:1726:import$195 seq_detector.sv:34
+(define-fun |seq_detector_u 1| ((state |seq_detector_s|)) Bool (or (= ((_ extract 0 0) (|seq_detector#33| state)) #b1) (not (= ((_ extract 0 0) (|seq_detector#34| state)) #b1)))) ; $auto$verificsva.cc:1726:import$195
+(define-fun |seq_detector#35| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#26| state))) ; $auto$verificsva.cc:293:getAccept$139
+(define-fun |seq_detector#36| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#35| state))) ; $auto$rtlil.cc:2496:Mux$332
+(define-fun |seq_detector#37| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#25| state))) ; $auto$verificsva.cc:293:getAccept$137
+(define-fun |seq_detector#38| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#37| state) (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$rtlil.cc:2429:And$149
+(define-fun |seq_detector#39| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#38| state))) ; $auto$rtlil.cc:2496:Mux$330
+(define-fun |seq_detector#40| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#24| state))) ; $auto$verificsva.cc:293:getAccept$134
+(define-fun |seq_detector#41| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#40| state) (ite (|seq_detector#3| state) #b1 #b0))) ; $auto$rtlil.cc:2429:And$159
+(define-fun |seq_detector#42| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#41| state))) ; $auto$rtlil.cc:2496:Mux$328
+(define-fun |seq_detector#43| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#23| state))) ; $auto$verificsva.cc:293:getAccept$132
+(define-fun |seq_detector#44| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#43| state) (|seq_detector#4| state))) ; $auto$rtlil.cc:2429:And$143
+(define-fun |seq_detector#45| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#44| state))) ; $auto$rtlil.cc:2496:Mux$326
+(define-fun |seq_detector#46| ((state |seq_detector_s|)) Bool (= (ite (|seq_detector#3| state) #b1 #b0) #b1)) ; $verific$i32$seq_detector.sv:42$80
+(define-fun |seq_detector#47| ((state |seq_detector_s|)) Bool (= (concat (|seq_detector#16| state) (ite (|seq_detector#46| state) #b1 #b0)) #b01)) ; $auto$rtlil.cc:2429:And$155
+(define-fun |seq_detector#48| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#47| state) #b1 #b0))) ; $auto$rtlil.cc:2496:Mux$324
+(define-fun |seq_detector#49| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#1| state))) ; $verific$n65$11
+(define-fun |seq_detector#50| ((state |seq_detector_s|)) Bool (|seq_detector_is| state)) ; $auto$rtlil.cc:3229:Initstate$72
+(define-fun |seq_detector#51| ((state |seq_detector_s|)) (_ BitVec 1) (bvxor (|seq_detector#49| state) (ite (|seq_detector#50| state) #b1 #b0))) ; $auto$rtlil.cc:2399:Not$199
+(define-fun |seq_detector#52| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#51| state))) ; $auto$rtlil.cc:2399:Not$197
+(define-fun |seq_detector#53| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#52| state))) ; $auto$rtlil.cc:2496:Mux$320
+(define-fun |seq_detector#54| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#27| state))) ; $auto$verificsva.cc:293:getAccept$221
+(define-fun |seq_detector#55| ((state |seq_detector_s|)) Bool (= (concat (|seq_detector#54| state) (|seq_detector#14| state)) #b10)) ; $auto$rtlil.cc:2403:ReduceOr$186
+(define-fun |seq_detector#56| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#55| state) #b1 #b0))) ; $auto$rtlil.cc:2496:Mux$318
+(define-fun |seq_detector#57| ((state |seq_detector_s|)) (_ BitVec 1) (bvor ((_ extract 0 0) (|seq_detector#2| state)) ((_ extract 1 1) (|seq_detector#2| state)))) ; $verific$n80$25
+(define-fun |seq_detector#58| ((state |seq_detector_s|)) (_ BitVec 1) (bvor ((_ extract 2 2) (|seq_detector#2| state)) ((_ extract 3 3) (|seq_detector#2| state)))) ; $verific$n82$27
+(define-fun |seq_detector#59| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#57| state) (|seq_detector#58| state))) ; $verific$n84$29
+(define-fun |seq_detector#60| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#59| state) ((_ extract 4 4) (|seq_detector#2| state)))) ; $verific$n88$33
+(define-fun |seq_detector#61| ((state |seq_detector_s|)) (_ BitVec 1) (bvand ((_ extract 0 0) (|seq_detector#2| state)) ((_ extract 1 1) (|seq_detector#2| state)))) ; $verific$n81$26
+(define-fun |seq_detector#62| ((state |seq_detector_s|)) (_ BitVec 1) (bvand ((_ extract 2 2) (|seq_detector#2| state)) ((_ extract 3 3) (|seq_detector#2| state)))) ; $verific$n83$28
+(define-fun |seq_detector#63| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#61| state) (|seq_detector#62| state))) ; $verific$n85$30
+(define-fun |seq_detector#64| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#57| state) (|seq_detector#58| state))) ; $verific$n86$31
+(define-fun |seq_detector#65| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#63| state) (|seq_detector#64| state))) ; $verific$n87$32
+(define-fun |seq_detector#66| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#59| state) ((_ extract 4 4) (|seq_detector#2| state)))) ; $verific$n89$34
+(define-fun |seq_detector#67| ((state |seq_detector_s|)) (_ BitVec 1) (bvor (|seq_detector#65| state) (|seq_detector#66| state))) ; $verific$n90$35
+(define-fun |seq_detector#68| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#67| state))) ; $verific$n91$36
+(define-fun |seq_detector#69| ((state |seq_detector_s|)) (_ BitVec 1) (bvand (|seq_detector#60| state) (|seq_detector#68| state))) ; $auto$rtlil.cc:2399:Not$118
+(define-fun |seq_detector#70| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (|seq_detector#69| state))) ; $auto$rtlil.cc:2399:Not$116
+(define-fun |seq_detector#71| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#70| state))) ; $auto$rtlil.cc:2496:Mux$316
+(define-fun |seq_detector#72| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#51| state))) ; $auto$rtlil.cc:2496:Mux$312
+(define-fun |seq_detector#73| ((state |seq_detector_s|)) (_ BitVec 1) (bvnot (ite (|seq_detector#55| state) #b1 #b0))) ; $auto$rtlil.cc:2399:Not$188
+(define-fun |seq_detector#74| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#73| state))) ; $auto$rtlil.cc:2496:Mux$310
+(define-fun |seq_detector#75| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (|seq_detector#69| state))) ; $auto$rtlil.cc:2496:Mux$308
+(define-fun |seq_detector#76| ((state |seq_detector_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b0 (ite (|seq_detector#9| state) #b1 #b0))) ; $auto$async2sync.cc:138:execute$277
+(define-fun |seq_detector#77| ((state |seq_detector_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|seq_detector#1| state)) #b1) #b00001 (|seq_detector#12| state))) ; $auto$async2sync.cc:138:execute$273
 (define-fun |seq_detector_a| ((state |seq_detector_s|)) Bool (and
   (|seq_detector_a 0| state)
   (|seq_detector_a 1| state)
 ))
-(define-fun |seq_detector_u| ((state |seq_detector_s|)) Bool 
+(define-fun |seq_detector_u| ((state |seq_detector_s|)) Bool (and
   (|seq_detector_u 0| state)
-)
+  (|seq_detector_u 1| state)
+))
 (define-fun |seq_detector_i| ((state |seq_detector_s|)) Bool (and
-  (= (= ((_ extract 0 0) (|seq_detector#16| state)) #b1) false) ; $verific$i26$seq_detector.sv:39$66
-  (= (= ((_ extract 0 0) (|seq_detector#17| state)) #b1) false) ; $auto$async2sync.cc:171:execute$277
-  (= (= ((_ extract 0 0) (|seq_detector#18| state)) #b1) false) ; $auto$async2sync.cc:171:execute$275
-  (= (= ((_ extract 0 0) (|seq_detector#19| state)) #b1) false) ; $auto$async2sync.cc:171:execute$271
-  (= (= ((_ extract 0 0) (|seq_detector#20| state)) #b1) false) ; $auto$async2sync.cc:171:execute$269
-  (= (= ((_ extract 0 0) (|seq_detector#21| state)) #b1) false) ; $auto$async2sync.cc:171:execute$265
-  (= (= ((_ extract 0 0) (|seq_detector#22| state)) #b1) false) ; $auto$async2sync.cc:171:execute$263
-  (= (= ((_ extract 0 0) (|seq_detector#23| state)) #b1) false) ; $auto$async2sync.cc:171:execute$261
-  (= (= ((_ extract 0 0) (|seq_detector#24| state)) #b1) false) ; $auto$async2sync.cc:171:execute$259
-  (= (= ((_ extract 0 0) (|seq_detector#25| state)) #b1) false) ; $auto$async2sync.cc:171:execute$257
-  (= (|seq_detector#0| state) #b00001) ; $auto$async2sync.cc:139:execute$250
+  (= (= ((_ extract 0 0) (|seq_detector#16| state)) #b1) false) ; $verific$i32$seq_detector.sv:42$79
+  (= (= ((_ extract 0 0) (|seq_detector#17| state)) #b1) false) ; $auto$async2sync.cc:171:execute$305
+  (= (= ((_ extract 0 0) (|seq_detector#18| state)) #b1) false) ; $auto$async2sync.cc:171:execute$303
+  (= (= ((_ extract 0 0) (|seq_detector#19| state)) #b1) false) ; $auto$async2sync.cc:171:execute$301
+  (= (= ((_ extract 0 0) (|seq_detector#20| state)) #b1) false) ; $auto$async2sync.cc:171:execute$297
+  (= (= ((_ extract 0 0) (|seq_detector#21| state)) #b1) false) ; $auto$async2sync.cc:171:execute$295
+  (= (= ((_ extract 0 0) (|seq_detector#22| state)) #b1) false) ; $auto$async2sync.cc:171:execute$293
+  (= (= ((_ extract 0 0) (|seq_detector#23| state)) #b1) false) ; $auto$async2sync.cc:171:execute$289
+  (= (= ((_ extract 0 0) (|seq_detector#24| state)) #b1) false) ; $auto$async2sync.cc:171:execute$287
+  (= (= ((_ extract 0 0) (|seq_detector#25| state)) #b1) false) ; $auto$async2sync.cc:171:execute$285
+  (= (= ((_ extract 0 0) (|seq_detector#26| state)) #b1) false) ; $auto$async2sync.cc:171:execute$283
+  (= (= ((_ extract 0 0) (|seq_detector#27| state)) #b1) false) ; $auto$async2sync.cc:171:execute$281
 ))
 (define-fun |seq_detector_h| ((state |seq_detector_s|)) Bool true)
 (define-fun |seq_detector_t| ((state |seq_detector_s|) (next_state |seq_detector_s|)) Bool (and
-  (= (|seq_detector#32| state) (|seq_detector#25| next_state)) ; $auto$verificsva.cc:362:getAccept$239 $auto$async2sync.cc:171:execute$257
-  (= (|seq_detector#35| state) (|seq_detector#24| next_state)) ; $auto$verificsva.cc:362:getAccept$160 $auto$async2sync.cc:171:execute$259
-  (= (|seq_detector#38| state) (|seq_detector#23| next_state)) ; $auto$verificsva.cc:362:getAccept$159 $auto$async2sync.cc:171:execute$261
-  (= (|seq_detector#41| state) (|seq_detector#22| next_state)) ; $auto$verificsva.cc:362:getAccept$158 $auto$async2sync.cc:171:execute$263
-  (= (|seq_detector#44| state) (|seq_detector#21| next_state)) ; $auto$verificsva.cc:362:getAccept$157 $auto$async2sync.cc:171:execute$265
-  (= (|seq_detector#47| state) (|seq_detector#20| next_state)) ; $auto$verificsva.cc:1814:import$181 $auto$async2sync.cc:171:execute$269
-  (= (|seq_detector#62| state) (|seq_detector#19| next_state)) ; $auto$verificsva.cc:1814:import$111 $auto$async2sync.cc:171:execute$271
-  (= (|seq_detector#64| state) (|seq_detector#18| next_state)) ; $auto$verificsva.cc:1813:import$180 $auto$async2sync.cc:171:execute$275
-  (= (|seq_detector#65| state) (|seq_detector#17| next_state)) ; $auto$verificsva.cc:1813:import$110 $auto$async2sync.cc:171:execute$277
-  (= (ite (|seq_detector#42| state) #b1 #b0) (|seq_detector#16| next_state)) ; $verific$i26$seq_detector.sv:39$69 $verific$i26$seq_detector.sv:39$66
-  (= (|seq_detector#66| state) (|seq_detector#13| next_state)) ; $verific$detect_out_reg$seq_detector.sv:31$63 \_witness_.anyinit_verific_detect_out_reg_seq_detector_sv_31_63
-  (= (|seq_detector#67| state) (|seq_detector#0| next_state)) ; $verific$state_reg$seq_detector.sv:13$50 $auto$async2sync.cc:139:execute$250
+  (= (|seq_detector#36| state) (|seq_detector#27| next_state)) ; $auto$verificsva.cc:362:getAccept$263 $auto$async2sync.cc:171:execute$281
+  (= (|seq_detector#39| state) (|seq_detector#26| next_state)) ; $auto$verificsva.cc:362:getAccept$173 $auto$async2sync.cc:171:execute$283
+  (= (|seq_detector#42| state) (|seq_detector#25| next_state)) ; $auto$verificsva.cc:362:getAccept$172 $auto$async2sync.cc:171:execute$285
+  (= (|seq_detector#45| state) (|seq_detector#24| next_state)) ; $auto$verificsva.cc:362:getAccept$171 $auto$async2sync.cc:171:execute$287
+  (= (|seq_detector#48| state) (|seq_detector#23| next_state)) ; $auto$verificsva.cc:362:getAccept$170 $auto$async2sync.cc:171:execute$289
+  (= (|seq_detector#53| state) (|seq_detector#22| next_state)) ; $auto$verificsva.cc:1814:import$205 $auto$async2sync.cc:171:execute$293
+  (= (|seq_detector#56| state) (|seq_detector#21| next_state)) ; $auto$verificsva.cc:1814:import$194 $auto$async2sync.cc:171:execute$295
+  (= (|seq_detector#71| state) (|seq_detector#20| next_state)) ; $auto$verificsva.cc:1814:import$124 $auto$async2sync.cc:171:execute$297
+  (= (|seq_detector#72| state) (|seq_detector#19| next_state)) ; $auto$verificsva.cc:1813:import$204 $auto$async2sync.cc:171:execute$301
+  (= (|seq_detector#74| state) (|seq_detector#18| next_state)) ; $auto$verificsva.cc:1813:import$193 $auto$async2sync.cc:171:execute$303
+  (= (|seq_detector#75| state) (|seq_detector#17| next_state)) ; $auto$verificsva.cc:1813:import$123 $auto$async2sync.cc:171:execute$305
+  (= (ite (|seq_detector#46| state) #b1 #b0) (|seq_detector#16| next_state)) ; $verific$i32$seq_detector.sv:42$82 $verific$i32$seq_detector.sv:42$79
+  (= (|seq_detector#76| state) (|seq_detector#13| next_state)) ; $verific$detect_out_reg$seq_detector.sv:30$68 \_witness_.anyinit_verific_detect_out_reg_seq_detector_sv_30_68
+  (= (|seq_detector#77| state) (|seq_detector#0| next_state)) ; $verific$state_reg$seq_detector.sv:12$55 \_witness_.anyinit_verific_state_reg_seq_detector_sv_12_55
 )) ; end of module seq_detector
 ; yosys-smt2-topmod seq_detector
 ; end of yosys output

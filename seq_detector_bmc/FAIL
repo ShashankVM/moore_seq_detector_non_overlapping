@@ -1,5 +1,0 @@
-Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
-Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
-engine_0 (smtbmc boolector) returned FAIL
-counterexample trace: engine_0/trace.vcd
-  failed assertion seq_detector.ASSERT_ONE_HOT_STATE_ENCODING at seq_detector.sv:46 in step 1

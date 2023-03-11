@@ -29,13 +29,17 @@ module seq_detector(
      if (reset) detect_out <= 1'b0;
      else       detect_out <= (state == S4);
 
+`ifdef FORMAL
+
+restrict property (!reset != $initstate);
+
 default clocking @(posedge clk);
 endclocking
 
 default disable iff (reset);
 
 sequence SEQ;
-  seq_in ##1 !seq_in ##1 seq_in[*2];
+  $rose(seq_in) ##1 !seq_in ##1 seq_in[*2];
 endsequence
 
 property CHK_SEQ_DETECT;
@@ -43,7 +47,9 @@ property CHK_SEQ_DETECT;
 endproperty;
 
 ASSERT_CHK_SEQ_DETECT: assert property (CHK_SEQ_DETECT);
-ASSERT_ONE_HOT_STATE_ENCODING: assert property ($onehot(state));
+ASSUME_ONE_HOT_STATE_ENCODING: assert property ($onehot(state));
 SEQ_DETECT_WITNESS: cover property (SEQ ##2 detect_out);
+
+`endif
 
 endmodule

@@ -6,7 +6,6 @@ module seq_detector(
    //one-hot encoding of FSM
    enum logic [4:0] {S0 = 5'b00001, S1 = 5'b00010, S2 = 5'b00100, S3 = 5'b01000, S4 = 5'b10000}  state, next;
 
-   initial state = S0;
    //state registers
    always_ff @(posedge clk or posedge reset)
      if (reset) state <= S0;
@@ -30,6 +29,10 @@ module seq_detector(
      if (reset) detect_out <= 1'b0;
      else       detect_out <= (state == S4);
 
+`ifdef FORMAL
+
+restrict property (!reset != $initstate);
+
 default clocking @(posedge clk);
 endclocking
 
@@ -46,5 +49,7 @@ endproperty;
 ASSERT_CHK_SEQ_DETECT: assert property (CHK_SEQ_DETECT);
 ASSUME_ONE_HOT_STATE_ENCODING: assert property ($onehot(state));
 SEQ_DETECT_WITNESS: cover property (SEQ ##2 detect_out);
+
+`endif
 
 endmodule
