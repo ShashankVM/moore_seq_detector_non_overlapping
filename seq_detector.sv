@@ -42,11 +42,16 @@ sequence SEQ;
   $rose(seq_in) ##1 !seq_in ##1 seq_in[*2];
 endsequence
 
+property unique_detect_out;
+   detect_out |-> (($past(seq_in, 2) == 1) && ($past(seq_in, 3) == 1) && ($past(seq_in, 4) == 0) && ($past(seq_in, 5) == 1));
+endproperty
+
 property CHK_SEQ_DETECT;
    SEQ |=> ##1 detect_out;
 endproperty;
 
 ASSERT_CHK_SEQ_DETECT: assert property (CHK_SEQ_DETECT);
+ASSERT_UNIQUE_DETECT_OUT: assert property (unique_detect_out);
 ASSUME_ONE_HOT_STATE_ENCODING: assert property ($onehot(state));
 SEQ_DETECT_WITNESS: cover property (SEQ ##2 detect_out);
 
