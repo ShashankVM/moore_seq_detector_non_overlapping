@@ -1,5 +1,5 @@
 $date
-  Tue Aug  6 19:38:46 2024
+  Tue Aug  6 22:20:24 2024
 $end
 $timescale
   1ns
@@ -16,21 +16,26 @@ $scope module seq_detector $end
   $var reg 1 seq_detector.detect_out detect_out $end
   $var reg 5 seq_detector.state state [4:0] $end
   $var wire 5 seq_detector.next next [4:0] $end
+  $var reg 4 seq_detector.serial_shift_reg serial_shift_reg [3:0] $end
 $upscope $end
 $enddefinitions $end
 #0
-1seq_detector.seq_in
+0seq_detector.seq_in
 1seq_detector.reset
-0seq_detector.detect_out
+1seq_detector.detect_out
 b00001 seq_detector.S0
 b00010 seq_detector.S1
 b00100 seq_detector.S2
 b01000 seq_detector.S3
 b10000 seq_detector.S4
 b00001 seq_detector.state
-b00010 seq_detector.next
+b00001 seq_detector.next
+b0000 seq_detector.serial_shift_reg
 #1
+1seq_detector.seq_in
 0seq_detector.reset
+0seq_detector.detect_out
+b00010 seq_detector.next
 #2
 0seq_detector.seq_in
 b00010 seq_detector.state
@@ -72,111 +77,129 @@ b00100 seq_detector.next
 b00100 seq_detector.state
 b01000 seq_detector.next
 #12
+0seq_detector.seq_in
 b01000 seq_detector.state
-b10000 seq_detector.next
-#13
-0seq_detector.seq_in
-b10000 seq_detector.state
-b00001 seq_detector.next
-#14
-1seq_detector.seq_in
-1seq_detector.detect_out
-b00001 seq_detector.state
-b00010 seq_detector.next
-#15
-0seq_detector.seq_in
-0seq_detector.detect_out
-b00010 seq_detector.state
 b00100 seq_detector.next
+#13
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
+#14
+0seq_detector.seq_in
+b01000 seq_detector.state
+b00100 seq_detector.next
+#15
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
 #16
+0seq_detector.seq_in
+b01000 seq_detector.state
+b00100 seq_detector.next
+#17
 b00100 seq_detector.state
 b00001 seq_detector.next
-#17
-1seq_detector.seq_in
-b00001 seq_detector.state
-b00010 seq_detector.next
 #18
-b00010 seq_detector.state
+b00001 seq_detector.state
 #19
+1seq_detector.seq_in
+b00010 seq_detector.next
 #20
+0seq_detector.seq_in
+b00010 seq_detector.state
+b00100 seq_detector.next
 #21
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
 #22
 0seq_detector.seq_in
+b01000 seq_detector.state
 b00100 seq_detector.next
 #23
 1seq_detector.seq_in
 b00100 seq_detector.state
 b01000 seq_detector.next
 #24
-0seq_detector.seq_in
-b01000 seq_detector.state
-b00100 seq_detector.next
-#25
-1seq_detector.seq_in
-b00100 seq_detector.state
-b01000 seq_detector.next
-#26
-0seq_detector.seq_in
-b01000 seq_detector.state
-b00100 seq_detector.next
-#27
-b00100 seq_detector.state
-b00001 seq_detector.next
-#28
-1seq_detector.seq_in
-b00001 seq_detector.state
-b00010 seq_detector.next
-#29
-b00010 seq_detector.state
-#30
-0seq_detector.seq_in
-b00100 seq_detector.next
-#31
-1seq_detector.seq_in
-b00100 seq_detector.state
-b01000 seq_detector.next
-#32
-0seq_detector.seq_in
-b01000 seq_detector.state
-b00100 seq_detector.next
-#33
-1seq_detector.seq_in
-b00100 seq_detector.state
-b01000 seq_detector.next
-#34
 b01000 seq_detector.state
 b10000 seq_detector.next
-#35
+#25
+0seq_detector.seq_in
 b10000 seq_detector.state
 b00001 seq_detector.next
-#36
+#26
+1seq_detector.seq_in
 1seq_detector.detect_out
 b00001 seq_detector.state
 b00010 seq_detector.next
-#37
+#27
 0seq_detector.seq_in
 0seq_detector.detect_out
 b00010 seq_detector.state
+b00100 seq_detector.next
+b0001 seq_detector.serial_shift_reg
+#28
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
+b0010 seq_detector.serial_shift_reg
+#29
+b01000 seq_detector.state
+b10000 seq_detector.next
+b0100 seq_detector.serial_shift_reg
+#30
+b10000 seq_detector.state
+b00001 seq_detector.next
+b1000 seq_detector.serial_shift_reg
+#31
+1seq_detector.detect_out
+b00001 seq_detector.state
+b00010 seq_detector.next
+b0000 seq_detector.serial_shift_reg
+#32
+0seq_detector.detect_out
+b00010 seq_detector.state
+b0001 seq_detector.serial_shift_reg
+#33
+0seq_detector.seq_in
+b00100 seq_detector.next
+b0010 seq_detector.serial_shift_reg
+#34
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
+b0100 seq_detector.serial_shift_reg
+#35
+0seq_detector.seq_in
+b01000 seq_detector.state
+b00100 seq_detector.next
+b1000 seq_detector.serial_shift_reg
+#36
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
+b0000 seq_detector.serial_shift_reg
+#37
+0seq_detector.seq_in
+b01000 seq_detector.state
 b00100 seq_detector.next
 #38
 1seq_detector.seq_in
 b00100 seq_detector.state
 b01000 seq_detector.next
 #39
-b01000 seq_detector.state
-b10000 seq_detector.next
-#40
 0seq_detector.seq_in
-b10000 seq_detector.state
+b01000 seq_detector.state
+b00100 seq_detector.next
+#40
+b00100 seq_detector.state
 b00001 seq_detector.next
 #41
 1seq_detector.seq_in
-1seq_detector.detect_out
 b00001 seq_detector.state
 b00010 seq_detector.next
 #42
 0seq_detector.seq_in
-0seq_detector.detect_out
 b00010 seq_detector.state
 b00100 seq_detector.next
 #43
@@ -184,52 +207,20 @@ b00100 seq_detector.next
 b00100 seq_detector.state
 b01000 seq_detector.next
 #44
+0seq_detector.seq_in
+b01000 seq_detector.state
+b00100 seq_detector.next
+#45
+1seq_detector.seq_in
+b00100 seq_detector.state
+b01000 seq_detector.next
+#46
 b01000 seq_detector.state
 b10000 seq_detector.next
-#45
+#47
 b10000 seq_detector.state
 b00001 seq_detector.next
-#46
-1seq_detector.detect_out
-b00001 seq_detector.state
-b00010 seq_detector.next
-#47
-0seq_detector.detect_out
-b00010 seq_detector.state
 #48
 0seq_detector.seq_in
-b00100 seq_detector.next
-#49
-1seq_detector.seq_in
-b00100 seq_detector.state
-b01000 seq_detector.next
-#50
-0seq_detector.seq_in
-b01000 seq_detector.state
-b00100 seq_detector.next
-#51
-b00100 seq_detector.state
-b00001 seq_detector.next
-#52
-b00001 seq_detector.state
-#53
-1seq_detector.seq_in
-b00010 seq_detector.next
-#54
-0seq_detector.seq_in
-b00010 seq_detector.state
-b00100 seq_detector.next
-#55
-1seq_detector.seq_in
-b00100 seq_detector.state
-b01000 seq_detector.next
-#56
-b01000 seq_detector.state
-b10000 seq_detector.next
-#57
-0seq_detector.seq_in
-b10000 seq_detector.state
-b00001 seq_detector.next
-#58
 1seq_detector.detect_out
 b00001 seq_detector.state

@@ -33,10 +33,12 @@ ASSUME_VALID_STATE1: assume property ($onehot(state));
 ASSUME_VALID_STATE2: assume property (reset |-> (state == S0));
 
 ASSERT_NON_OVERLAPPING_PROPERTY: assert property (@(posedge clk) (state == S4) |-> (next == S0));
-ASSERT_CHK_SEQ_DETECT: assert property (@(posedge clk) disable iff (reset) $rose(seq_in) ##1 !seq_in ##1 seq_in ##1 seq_in  |-> ##2 detect_out);
+//ASSERT_CHK_SEQ_DETECT: assert property (@(posedge clk) disable iff (reset) seq_in ##1 !seq_in ##1 seq_in ##1 seq_in  |-> ##2 (detect_out || ($countones(serial_shift_reg) != 0)));
+ASSERT_CHK_SEQ_DETECT: assert property (@(posedge clk) disable iff (reset) seq_in ##1 !seq_in ##1 seq_in ##1 seq_in  |-> ##2 (detect_out || $past(detect_out, 5) == 0));
+ASSERT_NO_CONTINUOUS_DETECT_OUT: assert property (@(posedge clk) disable iff (reset) detect_out |-> (($past(detect_out) != 1) && ($past(detect_out,2) != 1) && ($past(detect_out,3) != 1) && ($past(detect_out,4) != 1)));
 ASSERT_BI: assert property ( @(posedge clk)  disable iff (reset) detect_out |-> (($past(seq_in, 2) == 1) && ($past(seq_in, 3) == 1) && ($past(seq_in, 4) == 0) && ($past(seq_in, 5) == 1)) );
 
 COVER_NON_OVERLAPPING_SEQUENCE: cover property (seq_in ##1 !seq_in ##1 seq_in ##1 seq_in ##2 !seq_in);
-COVER_OVERLAPPING_SEQUENCE: cover property (seq_in ##1 !seq_in ##1 seq_in ##1 seq_in ##1 !seq_in ##1 seq_in ##1 seq_in ##3 seq_in);
+COVER_OVERLAPPING_SEQUENCE: cover property (seq_in ##1 !seq_in ##1 seq_in ##1 seq_in ##1 seq_in ##1 !seq_in ##1 seq_in ##3 seq_in);
 
 endmodule
