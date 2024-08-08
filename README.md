@@ -3,7 +3,7 @@ Formally verified "1011" non-overlapping sequence detector - Moore FSM
 ---
 - This is a formally verified Moore FSM based non-overlapping sequence detector with registered outputs.
 - **Tools & Technologies:** SystemVerilog, SystemVerilog Assertions, HW-CBMC
-- **Results:** Assertion passing using both Bounded Model Checking. Cover statements written and working visualized in the waveform.
+- **Results:** Assertion passing using Bounded Model Checking. Cover statements written and working visualized in the waveform.
 
 - **Files & Directories:**
    * seq_detector.sv: RTL design of "1011" non-overlapping sequence detector with registered outputs, Moore style. Contains formal properties and witness cover statement.
